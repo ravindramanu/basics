@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<stdlib.h>
 
 #define LISTSIZE 5
 
@@ -34,11 +35,30 @@ int last(Node *head){
   return 0;
 }
 
+int lookupvalue(Node *head, int keyvalue){
+  while(head->nextelement != NULL){
+    if (head->value == keyvalue) {
+      printf("Key value %d found at Item Number %d\n", keyvalue, head->itemnumber);
+      return 0;
+    }
+    head = head->nextelement;
+  }
+
+  // Check tail
+  if (head->value == keyvalue) {
+    printf("Key value %d found at Item Number %d\n", keyvalue, head->itemnumber);
+    return 0;
+  }
+
+  printf("Key value %d is not in the list\n", keyvalue);
+  return 0;
+}
+
 int main() {
   // Create list in bss (There are other ways to do this. Just did this for convenience)
   // BSS because the list is not initialized?. I suppose if i used malloc then it would
   // be created on the heap. Probably the better way to do it?
-  
+
   Node list[LISTSIZE];
   int i=0;
 
@@ -61,6 +81,11 @@ int main() {
 
   // Last element of the list
   last(list);
+
+  // Lookup element of the list
+  lookupvalue(list, 30);
+  lookupvalue(list, 96);
+  lookupvalue(list, 40);
 
   return 0;
 }
