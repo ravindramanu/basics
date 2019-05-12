@@ -75,20 +75,32 @@ void displaytailnodes(Node * tailend){
     printf("----------------------------------\n");
     return;
   }
-  printf("Stack empty.\n");
+  printf("Stack is empty.\n");
+  printf("----------------------------------\n");
   return;
 }
 
 // Funtion to pop the last value of the stack
 void pop(int * inputdata){
-  Node * temppointer = tail;
-  * inputdata = temppointer->data;
-  tail = temppointer->prev;
-  tail->next=NULL;
-  temppointer->prev = NULL;
-  free(temppointer);
-  --totalnodes;
-  return;
+  if(totalnodes != 0 && tail->prev != NULL){
+    Node * temppointer = tail;
+    * inputdata = temppointer->data;
+    tail = temppointer->prev;
+    tail->next=NULL;
+    temppointer->prev = NULL;
+    free(temppointer);
+    --totalnodes;
+    return;
+  }else if (totalnodes!=0 && tail->prev == NULL) {
+    * inputdata = tail->data;
+    free(tail);
+    --totalnodes;
+    return;
+  }else {
+    * inputdata = 0;
+    printf("Stack is empty. Nothing to pop.\n");
+    return;
+  }
 }
 
 // Main entry point
@@ -98,6 +110,10 @@ int main(void) {
 
   push(15);
   displaynodes(head);
+
+  pop(&data);
+  printf("Popped data is %d\n", data);
+  displaytailnodes(tail);
 
   push(64);
   displaynodes(head);
@@ -112,11 +128,28 @@ int main(void) {
   displaynodes(head);
 
   pop(&data);
-  displaytailnodes(tail);
   printf("Popped data is %d\n", data);
+  displaytailnodes(tail);
 
   pop(&data);
-  displaytailnodes(tail);
   printf("Popped data is %d\n", data);
+  displaytailnodes(tail);
+
+  pop(&data);
+  printf("Popped data is %d\n", data);
+  displaytailnodes(tail);
+
+  pop(&data);
+  printf("Popped data is %d\n", data);
+  displaytailnodes(tail);
+
+  pop(&data);
+  printf("Popped data is %d\n", data);
+  displaytailnodes(tail);
+
+  pop(&data);
+  printf("Popped data is %d\n", data);
+  displaytailnodes(tail);
+
   return 0;
 }
