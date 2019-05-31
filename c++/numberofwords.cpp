@@ -51,10 +51,7 @@ int noOfWords2(const char * character){
     ++character;
   }
 
-  if (!((*character) == ' ' || (*character == '.') || (*character == ','))) {
-    ++wordCount;
-  }
-  return wordCount;
+  return ++wordCount;
 }
 
 int main(){
