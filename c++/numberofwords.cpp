@@ -38,16 +38,35 @@ int noOfWords (const char * character){
   return ++wordCount;
 }
 
+int noOfWords2(const char * character){
+  const char * prevchar = character;
+  int wordCount = 0;
+
+  while (*character) {
+    if ((!((*character) == ' ' || (*character == '.') || (*character == ','))) \
+    && *prevchar== ' ' ) {
+      ++wordCount;
+    }
+    prevchar = character;
+    ++character;
+  }
+
+  if (!((*character) == ' ' || (*character == '.') || (*character == ','))) {
+    ++wordCount;
+  }
+  return wordCount;
+}
+
 int main(){
-  int a = noOfWords(problem1);
+  int a = noOfWords2(problem1);
   std::cout << a << '\n';
-  a = noOfWords(problem5);
+  a = noOfWords2(problem5);
   std::cout << a << '\n';
-  a = noOfWords(problem4);
+  a = noOfWords2(problem4);
   std::cout << a << '\n';
-  a = noOfWords(problem2);
+  a = noOfWords2(problem2);
   std::cout << a << '\n';
-  a = noOfWords(problem3);
+  a = noOfWords2(problem3);
 
   std::cout << a << '\n';
   return 0;
