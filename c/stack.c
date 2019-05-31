@@ -44,7 +44,7 @@ void push(int inputdata){
 }
 
 // Function to traverse through all the nodes and display them using the head
-void displaynodes(Node * headend){
+void peek(Node * headend){
   if(totalnodes != 0){
     printf("List items are ordered as follows:\n");
     while (headend->next != NULL) {
@@ -62,7 +62,7 @@ void displaynodes(Node * headend){
 }
 
 // Function to traverse through all the nodes and display them using the tail
-void displaytailnodes(Node * tailend){
+void peekreverse(Node * tailend){
   if(totalnodes != 0){
     printf("List items are ordered as follows:\n");
     while (tailend->prev != NULL) {
@@ -109,47 +109,47 @@ int main(void) {
   int data;
 
   push(15);
-  displaynodes(head);
+  peek(head);
 
   pop(&data);
   printf("Popped data is %d\n", data);
-  displaytailnodes(tail);
+  peekreverse(tail);
 
   push(64);
-  displaynodes(head);
+  peek(head);
 
   push(12);
-  displaynodes(head);
+  peek(head);
 
   push(931);
-  displaynodes(head);
+  peek(head);
 
   push(932);
-  displaynodes(head);
+  peek(head);
 
   pop(&data);
   printf("Popped data is %d\n", data);
-  displaytailnodes(tail);
+  peekreverse(tail);
 
   pop(&data);
   printf("Popped data is %d\n", data);
-  displaytailnodes(tail);
+  peekreverse(tail);
 
   pop(&data);
   printf("Popped data is %d\n", data);
-  displaytailnodes(tail);
+  peekreverse(tail);
 
   pop(&data);
   printf("Popped data is %d\n", data);
-  displaytailnodes(tail);
+  peekreverse(tail);
 
   pop(&data);
   printf("Popped data is %d\n", data);
-  displaytailnodes(tail);
+  peekreverse(tail);
 
   pop(&data);
   printf("Popped data is %d\n", data);
-  displaytailnodes(tail);
+  peekreverse(tail);
 
   return 0;
 }
